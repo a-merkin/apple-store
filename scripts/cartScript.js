@@ -23,25 +23,32 @@ deliveryButtons.forEach((button) => {
 
 function addToCart(productName, productPrice) {
   let product = {
+    id: cart.length + 1,
     name: productName,
     price: productPrice,
   };
   cart.push(product);
+  updateLocalStorage();
+}
 
-  const cartString = JSON.stringify(cart);
-
-  localStorage.setItem("cart", cartString);
+function deleteFromCart(cartId) {
+  cart = cart.filter((cart) => cart.id !== cartId);
+  calcSum();
+  renderCart();
+  updateLocalStorage();
 }
 
 function renderCart() {
-  // очищаем список
   cartItems.innerHTML = "";
-  // проходимся по всем товарам в корзине и добавляем их в список
+
   cart.forEach((item) => {
     const li = document.createElement("li");
     li.innerHTML = `
             <span>${item.name}</span>
             <span>${item.price} руб.</span>
+            <button class="icon-btn" onclick="deleteFromCart(${item.id})">
+            Удалить
+            </button>
           `;
     cartItems.appendChild(li);
   });
@@ -64,4 +71,22 @@ function getLocalStorage() {
   const cartString = localStorage.getItem("cart");
 
   if (JSON.parse(cartString)) cart = JSON.parse(cartString);
+}
+
+function updateLocalStorage() {
+  const cartString = JSON.stringify(cart);
+
+  localStorage.setItem("cart", cartString);
+}
+
+function showFormData(event) {
+  event.preventDefault();
+  const form = event.target;
+  const name = form.name.value;
+  const phone = form.phone.value;
+
+  // выводим данные в алерте
+  alert(
+    `Спасибо, ${name}!\nИтоговая сумма заказа: ${cartSum} руб\nС Вами свяжуться по номеру ${phone}`
+  );
 }

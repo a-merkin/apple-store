@@ -24,6 +24,17 @@
     <section>
       <h2>Итого: <span class="total-price"></span></h2>
     </section>
+    <section>
+      <h2>Оформление</h2>
+      <p>Для оформения заказа оставьте данные для обратной связи:</p>
+      <form onsubmit="showFormData(event)">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" /><br /><br />
+        <label for="phone">Номер телефона:</label>
+        <input type="text" id="phone" name="phone" /><br /><br />
+        <input class="buy-btn" type="submit" value="Отправить" />
+      </form>
+    </section>
   </body>
 </html>
 

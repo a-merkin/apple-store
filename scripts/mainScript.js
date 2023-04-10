@@ -14,5 +14,4 @@ function renderCartCount() {
   if (JSON.parse(cartString)) cart = JSON.parse(cartString);
 
   cartCount.innerHTML = `${cart.length}`;
-
 }
