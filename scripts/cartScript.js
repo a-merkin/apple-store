@@ -21,11 +21,22 @@ deliveryButtons.forEach((button) => {
   });
 });
 
-function addToCart(productName, productPrice) {
+function addToCart(event) {
+  event.preventDefault();
+
+  const ramValue = document.querySelector("#ram-select").value;
+  const colorValue = document.querySelector("#color-select").value;
+  const storageValue = document.querySelector("#storage-select").value;
+
+  console.log(ramValue, colorValue, storageValue);
+
   let product = {
     id: cart.length + 1,
-    name: productName,
-    price: productPrice,
+    name: "Apple MacBook Air M1",
+    price: 75000,
+    color: colorValue,
+    ram: ramValue,
+    storage: storageValue,
   };
   cart.push(product);
   updateLocalStorage();
@@ -45,6 +56,9 @@ function renderCart() {
     const li = document.createElement("li");
     li.innerHTML = `
             <span>${item.name}</span>
+            <span>${item.color}</span>
+            <span>${item.ram} гб.</span>
+            <span>${item.storage} гб.</span>
             <span>${item.price} руб.</span>
             <button class="icon-btn" onclick="deleteFromCart(${item.id})">
             Удалить
@@ -82,6 +96,7 @@ function updateLocalStorage() {
 function showFormData(event) {
   event.preventDefault();
   const form = event.target;
+  console.log(event);
   const name = form.name.value;
   const phone = form.phone.value;
 

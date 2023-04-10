@@ -64,10 +64,35 @@
     <section>
       <h1 id="buy-title">Покупка</h1>
       <p>Купите новый Macbook Air M1 прямо сейчас у оффициальных диллеров!</p>
-
-      <button class="buy-btn" onclick="addToCart(' Air Macbook M1', '75000')">
-        Купить
-      </button>
+      <form onsubmit="addToCart(event)">
+        <div class="configuration-container">
+          <div>
+            <label for="storage-select">Выберите объем памяти:</label>
+            <select id="storage-select" name="storage-select">
+              <option value="256gb">256 ГБ</option>
+              <option value="512gb">512 ГБ</option>
+              <option value="1tb">1 ТБ</option>
+            </select>
+          </div>
+          <div>
+            <label for="ram-select">Выберите объем оперативной памяти:</label>
+            <select id="ram-select" name="ram-select">
+              <option value="8gb">8 ГБ</option>
+              <option value="16gb">16 ГБ</option>
+              <option value="32gb">32 ГБ</option>
+            </select>
+          </div>
+          <div>
+            <label for="color-select">Выберите цвет:</label>
+            <select id="color-select" name="color-select">
+              <option value="silver">Серебристый</option>
+              <option value="space-gray">Серый космос</option>
+              <option value="gold">Золотой</option>
+            </select>
+          </div>
+        </div>
+        <input class="buy-btn" type="submit" value="В корзину" />
+      </form>
     </section>
   </body>
 </html>
