@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MacBook Air M1</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="./assets/logo.png" />
+      </div>
+      <div class="title">MacBook Air M1</div>
+      <div class="header-items">
+        <a href="#description-title">О продукте</a>
+        <a href="#why-title">Почему Mac</a>
+        <a href="#specification-title">Характеристики</a>
+        <a href="#reviews-title">Отзывы</a>
+        <a href="#buy-title">Купить</a>
+        <a href="#buy-title">Корзина</a>
+      </div>
+    </header>
+
+    <section>
+      <h1 id="description-title">Воплощение мощности и легкости</h1>
+      <p>
+        Новый MacBook Air M1 – это тонкий и легкий ноутбук, созданный для тех,
+        кто нуждается в производительности и мобильности.
+      </p>
+      <img src="./assets/macbook-air.png" />
+      <p>
+        Процессор M1 позволяет запускать приложения быстрее и более эффективно,
+        а благодаря технологии Wi-Fi 6 вы можете работать в любом месте.
+      </p>
+    </section>
+
+    <section>
+      <h1 id="why-title">Почему Mac?</h1>
+      <p>
+        Его легко использовать. Он невероятно мощный. Аккумулятор на грани
+        фантастики. Mac открывает совершенно новые возможности для работы, игр и
+        творчества. На нём предустановлено множество приложений, которыми можно
+        пользоваться без предварительной настройки. Благодаря бесплатным
+        регулярным обновлениям поддерживается актуальность и бесперебойная
+        работа программного обеспечения. И если у вас уже есть iPhone, то всё
+        окажется знакомым — как только вы включите свой Mac.
+      </p>
+    </section>
+
+    <section>
+      <h1 id="specification-title">Характеристики:</h1>
+      <ul>
+        <li>Процессор M1 с 8-ядерной графикой</li>
+        <li>13,3-дюймовый дисплей Retina</li>
+        <li>До 16 ГБ памяти и до 2 ТБ SSD-накопителя</li>
+        <li>Вес: 1,29 кг</li>
+        <li>Технология Wi-Fi 6 и Bluetooth 5.0</li>
+      </ul>
+    </section>
+
+    <section>
+      <h1 id="reviews-title">Отзывы покупателей</h1>
+      <p class="review-item">
+        <span
+          >Отличный дисплей, быстрый, удобная клавиатура, вернули Magsafe, время
+          автономно работы вообще какое-то невероятное. Одни сплошные
+          плюсы.</span
+        >
+        <span style="color: grey">Дмитрий</span>
+      </p>
+      <p class="review-item">
+        <span
+          >Синий цвет, конечно, красивый, но настолько маркий, что просто ужас,
+          наверное, поменял бы свой выбор цвета на классический, если бы знал
+          глобальность проблемы, любое касание и палец,палец,палец..</span
+        >
+        <span style="color: grey">Иван</span>
+      </p>
+    </section>
+
+    <section>
+      <h1 id="buy-title">Покупка</h1>
+      <p>Купите новый Macbook Air M1 прямо сейчас у оффициальных диллеров!</p>
+
+      <button class="add-to-cart">Купить</button>
+    </section>
+
+    <div class="cart">
+      <h2>Корзина</h2>
+      <ul class="cart-items"></ul>
+      <p class="total">Итого: $0</p>
+    </div>
+  </body>
+</html>
+
+<script>
+  // JavaScript код для добавления товара в корзину
+  const products = document.querySelectorAll(".product");
+  const cartItems = document.querySelector(".cart-items");
+  const cartTotal = document.querySelector(".total");
+  const addToCartButton = document.querySelector(".add-to-cart");
+
+  let cart = [];
+
+  function addToCart(productName, productPrice) {
+    let product = {
+      name: productName,
+      price: productPrice,
+    };
+    cart.push(product);
+  }
+
+  function renderCart() {
+    cartItems.innerHTML = "";
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+      let cartItem = document.createElement("li");
+      cartItem.innerText = cart[i].name + " - $" + cart[i].price;
+      cartItems.appendChild(cartItem);
+      total += cart[i].price;
+    }
+    cartTotal.innerText = "Итого: $" + total;
+  }
+
+  products.forEach((product) => {
+    let productName = product.querySelector("h2").innerText;
+    let productPrice = Number(
+      product.querySelector("p").innerText.replace("$", "")
+    );
+    addToCartButton.addEventListener("click", () => {
+      addToCart(productName, productPrice);
+      renderCart();
+    });
+  });
+</script>
