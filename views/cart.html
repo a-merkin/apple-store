@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+  </head>
+  <body>
+    <section>
+      <div class="cart">
+        <h2>Корзина</h2>
+        <ul class="cart-items"></ul>
+      </div>
+    </section>
+    <section>
+      <h2>Выберите способ доставки:</h2>
+      <label>
+        <input type="radio" name="delivery" value="0" checked />
+        Самовывоз
+      </label>
+      <label>
+        <input type="radio" name="delivery" value="300" />
+        Курьерская доставка (300 руб.)
+      </label>
+    </section>
+    <section>
+      <h2>Итого: <span class="total-price"></span></h2>
+    </section>
+  </body>
+</html>
+
+<script src="../scripts/cartScript.js"></script>
